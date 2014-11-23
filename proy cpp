@@ -53,7 +53,8 @@ int main()
      
     //Para saber el numero de reservas y no desplegar reservas de mas    
         int iReservas=0;
-     
+        
+    //Lee el archivo reserva y se mandan los datos al arreglo de reservaciones 
         for (int c=0; (c<50)&&(ArchivoReserva.eof()==false); c=c+1,iReservas=iReservas+1)
         {
             int dd,mm,aa,idMaterial,idCliente;
