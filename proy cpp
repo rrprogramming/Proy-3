@@ -14,11 +14,42 @@ void menu()
 int main()
 {
     Reserva Reservaciones[50];
-    char opcion='g';
+    Material *M[20];
+    int cont = 0, id, iaux; //necesarios pra ingresar los datos de Material
+    string titulo, saux;    //necesarios pra ingresar los datos de Material
+    char opcion='g', clave; //necesarios pra ingresar los datos de Material
     
     //Carga Reserva
         ifstream ArchivoReserva;
         ArchivoReserva.open("Reserva_Win.txt");
+        
+    //Carga Material
+        ifstream ArchivoMaterial;
+        ArchivoMaterial.open("Material.txt");
+    
+    //Crea el areglo de apuntadores a objetos de tipo material e hijos
+        while (!ArchivoMaterial.eof()){
+        ArchivoMaterial>>id>>titulo>>clave;
+
+        switch (clave){
+        case 'L':
+            ArchivoMaterial>>iaux>>saux;
+            M[cont] = new Libro(id, titulo, iaux, saux);
+            break;
+
+        case 'D':
+            ArchivoMaterial>>iaux;
+            M[cont] = new Disco(id, titulo, iaux);
+            break;
+
+        case 'S':
+            ArchivoMaterial>>saux;
+            M[cont] = new Software(id, titulo, saux);
+            break;
+        }
+        
+        cont++;
+        }
      
     //Para saber el numero de reservas y no desplegar reservas de mas    
         int iReservas=0;
