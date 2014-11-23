@@ -1,6 +1,20 @@
 
-	
+void menu()
+{
+    cout << "Menu" << endl;
+    cout << "a. Consultar la lista de Materiales" << endl;
+    cout << "b. Consultar la lista de reservaciones" << endl;
+    cout << "c. Consultar las reservaciones de un material dado" << endl;
+    cout << "d. Consultar las reservaciones de una fecha dada" << endl;
+    cout << "e. Hacer una reservacion" << endl;
+    cout << "f. Terminar" << endl;
+    cout << "Ingresa la opcion: ";
+}
 
+int main()
+{
+    Reserva Reservaciones[50];
+    
     //Carga Reserva
         ifstream ArchivoReserva;
         ArchivoReserva.open("Reserva_Win.txt");
@@ -21,3 +35,44 @@
             Reservaciones[c].setidCliente(idCliente);
         }
 
+    while (tolower(opcion)!='f')
+    {
+        menu();
+        cin >> opcion;
+        cout << endl;
+
+        switch (tolower(opcion))
+        {
+        case 'a':
+            break;
+
+        case 'b':
+            for (int c=0;c<iReservas;c=c+1)
+            {
+                Fecha FechaReservacion=Reservaciones[c].getfechaReservacion();
+                cout << Reservaciones[c].getidMaterial() << " " << Reservaciones[c].getidCliente() << " " << FechaReservacion;
+                
+            }
+            break;
+
+        case 'c':
+            break;
+
+        case 'd':
+            break;
+
+        case 'e':
+            break;
+
+        case 'f':
+            ArchivoReserva.close();
+            break;
+
+        default:
+            cout << "Error, opcion incorrecta" << endl << endl;
+        }
+    }
+
+
+    return 0;
+}
