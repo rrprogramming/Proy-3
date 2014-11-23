@@ -1,0 +1,64 @@
+class Reserva
+{
+    public:
+        Reserva();
+        Reserva(int idMaterial, int idCliente, Fecha fechaReservacion);
+
+        void setidMaterial(int idMaterial);
+        void setidCliente(int idCliente);
+        void setfechaReservacion(Fecha fechaReservacion);
+
+        int getidMaterial();
+        int getidCliente();
+        Fecha getfechaReservacion();
+
+        Fecha calculaFechaFinReserva(int cantDias);
+
+    private:
+        int idMaterial, idCliente;
+        Fecha fechaReservacion;
+
+};
+Reserva::Reserva()
+{
+    this->idMaterial=0;
+    this->idCliente=0;
+    this->fechaReservacion.setFecha(1,1,1);
+}
+Reserva::Reserva(int idMaterial, int idCliente, Fecha fechaReservacion)
+{
+    this->idMaterial=idMaterial;
+    this->idCliente=idCliente;
+    this->fechaReservacion=fechaReservacion;
+}
+
+void Reserva::setidMaterial(int idMaterial)
+{
+    this->idMaterial=idMaterial;
+}
+void Reserva::setidCliente(int idCliente)
+{
+    this->idCliente=idCliente;
+}
+void Reserva::setfechaReservacion(Fecha fechaReservacion)
+{
+    this->fechaReservacion=fechaReservacion;
+}
+
+int Reserva::getidMaterial()
+{
+    return this->idMaterial;
+}
+int Reserva::getidCliente()
+{
+    return this->idCliente;
+}
+Fecha Reserva::getfechaReservacion()
+{
+    return this->fechaReservacion;
+}
+
+Fecha Reserva::calculaFechaFinReserva(int cantDias)
+{
+    return fechaReservacion+cantDias;
+}
